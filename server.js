@@ -5,6 +5,7 @@ var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
 function start(router) {
+    var port = 9000;
     var app = connect()
         .use(compression())
         .use(cookieSession({
@@ -13,13 +14,8 @@ function start(router) {
         .use(bodyParser.urlencoded())
         .use(router);
 
-    http.createServer(app).listen(process.env.PORT);
-
-
+    http.createServer(app).listen(port);
+    console.log("Server start at " + port + " port.");
 }
 
 exports.start = start;
-
-
-
-

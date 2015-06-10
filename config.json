@@ -1,0 +1,10 @@
+{
+  "MongoDB": {
+    "host": "localhost"
+  },
+  "Weather": {
+    "URL": "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService/ForecastGrib",
+    "Key": "SEbkQuDSbE6huT%2BqyHO2FtvB4lEjTxTk1OBAhZDYbixq7hR6W2aYEtKXHFhSn5d8ebnACELx1HpvVamrivm4SA%3D%3D"
+  },
+  "loglevel": "warning"
+}

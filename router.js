@@ -1,9 +1,11 @@
-
 var connectRoute = require('connect-route');
 var callRequest = require('request');
+
 var parseString = require('xml2js').parseString;
+var requestHandler = require('./requestHandler');
 
 var connectRouter = connectRoute(function(router) {
+
     router.get('/', function (req, res, next) {
         res.end('index');
     });
@@ -12,16 +14,22 @@ var connectRouter = connectRoute(function(router) {
         res.end('home');
     });
 
+    router.get('/beach', requestHandler._findBeach);
+
+    router.get('/beach/:name', requestHandler._findBeach);
+
+    router.get('/beaches/:id', requestHandler._detailInfo);
+
     router.get('/home/:id', function (req, res, next) {
         callRequest('http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1159068000', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 parseString(body, function (err, result) {
                     console.dir(result);
-                    
+
                     res.end(result.rss.$.version);
                 });
             }
-        })
+        });
         
         
         //res.end('home ' + req.params.id);
